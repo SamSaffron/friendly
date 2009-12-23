@@ -21,6 +21,7 @@ module Friendly
       when self.class # UUID
         @bytes = bytes.to_s
       when String
+        bytes.force_encoding("ASCII-8BIT") if bytes.respond_to?(:force_encoding) 
         case bytes.size
         when 16 # Raw byte array
           @bytes = bytes
